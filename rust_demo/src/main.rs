@@ -167,9 +167,12 @@ fn main() {
     
     // 悬空指针(空指针) Dangling References, 编译时会报错, Rust 编译时会抛出悬空指针得错误。
     // let reference_to_nothing = dangle();
+    
 
+    
 }
 
+// &s 试图返回 s 得引用，这样做会被 Rust 编译抛出错误，这里正确做法是直接返回 String, s.
 // fn dangle() -> &String {
 //     let s = String::from("hello");
 //     &s
