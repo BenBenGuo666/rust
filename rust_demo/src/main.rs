@@ -147,7 +147,41 @@ fn main() {
     // let s2 = s1.clone();
     // println!("s1 = {}, s2 = {}", s1, s2); // clone 会把 s1 堆中内存复制.
 
+    // --> 引用和借用 References and Borrowing(使用 & 为借用对象,原变量不会被销毁，被借用后不能修改变量指向的内容)
+    // let s1 = String::from("hello");
+    // let len = calculate_length(&s1);
+    // println!("The length of '{}' is {}.", s1, len);
+    
+    // --> 可变引用 Mutable References (限制:特定范围内只能由一个可变引用)
+    // fn main() {
+    //     let mut s = String::from("hello");
+    //     change(&mut s);
+    // }
+    // 可变引用的另一种使用方式，通过创建作用域来使得多个可变引用可以共存。
+    // let mut s = String::from("hello");
+    // {
+    //     let r1 = &mut s;
+    // } // r1 goes out of scope here, so we can make a new reference with no problems.
+    // let r2 = &mut s;
+    // 不可变引用不可以有可变引用，不可变引用可以同时有多个多可变引用，因为多个不可变引用读取数据时不会影响到别人读取
+    
+    // 悬空指针(空指针) Dangling References, 编译时会报错, Rust 编译时会抛出悬空指针得错误。
+    // let reference_to_nothing = dangle();
+
 }
+
+// fn dangle() -> &String {
+//     let s = String::from("hello");
+//     &s
+// }
+
+// fn change(some_string: &mut String) {
+//     some_string.push_str(", world");
+// }
+
+// fn calculate_length(s: &String) -> usize {
+//     s.len()
+// }
 
 // fn plus_one(x: i32) -> i32{
 //     x + 1
