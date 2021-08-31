@@ -168,9 +168,51 @@ fn main() {
     // 悬空指针(空指针) Dangling References, 编译时会报错, Rust 编译时会抛出悬空指针得错误。
     // let reference_to_nothing = dangle();
     
+    // --> 切片类型 Slice Type
+    // let mut s = String::from("hello world");
+    // let word = first_word(&s);
+    // // s.clear(); // error!
+    // println!("the first word is: {}", word);
+    // let my_string = String::from("hello world");
+    // first_word works on slices of `String`s
+    // let word = first_word(&my_string[..]);
+    // println!("the first word is: {}", word);
+    // let my_string_literal = "hello world";
+    // first_word works on slices of string literals
+    // let word = first_word(&my_string_literal[..]);
+    // println!("the first word is: {}", word);
+    // Because string literals *are* string slices already,
+    // this works too, without the slice syntax!
+    // let word = first_word(my_string_literal);
+    // println!("the first word is: {}", word);
 
-    
+
+
+
+    // --> 定义和实例化结构 Defining and Instantiating Structs
+    // 
 }
+
+// &str 允许对结果进行切片(Slice)
+// fn first_word(s: &str) -> &str {
+//     let bytes = s.as_bytes();
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
+//     &s[..]
+// }
+
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes();
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
+//     &s[..]
+// }
 
 // &s 试图返回 s 得引用，这样做会被 Rust 编译抛出错误，这里正确做法是直接返回 String, s.
 // fn dangle() -> &String {
