@@ -190,8 +190,24 @@ fn main() {
 
 
     // --> 定义和实例化结构 Defining and Instantiating Structs
-    // 
+    let mut user1 = User {
+        email: String::from("someone@example.com"),
+        username: String::from("someoneusername123"),
+        active: true,
+        sign_in_count: 1,
+    };
+    user1.email = String::from("anothereamil@example.com");
+    // println!("this User email: {}", user1.email);
+
 }
+
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
 
 // &str 允许对结果进行切片(Slice)
 // fn first_word(s: &str) -> &str {
